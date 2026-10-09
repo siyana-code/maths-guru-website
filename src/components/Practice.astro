@@ -1,0 +1,339 @@
+---
+import type { Question } from '../lib/types';
+import { questions } from '../data/questions/g6-3-2';
+
+interface Props {
+  /** Restrict to one stage. */
+  stage?: Question['stage'];
+}
+
+const { stage } = Astro.props;
+
+const pool = stage
+  ? questions.filter((q) => q.stage === stage)
+  : questions.filter((q) => q.stage === 'independent');
+
+const COMPETENCY_ID = '3.2';
+
+// Serialise what the client needs. Deliberately minimal: the engine is imported
+// as a real module by the client script, so we only send the question data.
+const payload = pool.map((q) => ({
+  id: q.id,
+  competencyId: q.competencyId,
+  prompt: q.prompt,
+  math: q.math ?? null,
+  accept: q.accept,
+  explain: q.explain,
+  hints: q.hints ?? [],
+  stage: q.stage,
+  completionStart: q.completionStart ?? null,
+  diagnoses: q.diagnoses.map((d: Question['diagnoses'][number]) => ({
+    when: d.when,
+    say: d.say,
+    because: d.because,
+    instead: d.instead,
+  })),
+}));
+---
+
+<section class="practice-zone" data-competency={COMPETENCY_ID}>
+  <div class="progress-line">
+    <span id="progress-text">Loading your progress...</span>
+    <span id="streak-text" class="muted"></span>
+  </div>
+
+  <div class="progress-track" role="progressbar" aria-labelledby="progress-text">
+    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+  </div>
+
+  <p class="muted" id="why-this-question"></p>
+
+  <div class="practice" id="question-card">
+    <p class="practice-stage" id="stage-label"></p>
+    <p id="question-prompt"></p>
+    <p id="question-math"></p>
+
+    <div id="completion-start" hidden>
+      <div class="callout callout-key">
+        <p class="callout-title">We have started this for you</p>
+        <p id="completion-text"></p>
+      </div>
+    </div>
+
+    <label class="muted" for="answer">Your answer</label>
+    <input
+      class="field"
+      id="answer"
+      type="text"
+      inputmode="text"
+      autocomplete="off"
+      autocapitalize="off"
+      spellcheck="false"
+      placeholder="Type your answer, for example 2/3"
+      aria-describedby="feedback"
+    />
+
+    <div class="button-row">
+      <button class="button" id="check" type="button">Check my answer</button>
+      <button class="hint-btn" id="hint" type="button" hidden>
+        Give me a hint
+      </button>
+    </div>
+
+    <div class="hint-list" id="hints" hidden></div>
+
+    <div class="feedback" id="feedback" role="status" aria-live="polite"></div>
+
+    <div class="button-row" id="next-row" hidden>
+      <button class="button" id="next" type="button">Next question</button>
+    </div>
+  </div>
+
+  <p class="muted" id="summary" hidden></p>
+</section>
+
+<script>
+  import { mark, record, chooseNext, emptyState, masteryPercent, computeStreak } from '../lib/engine';
+  import { normalise } from '../lib/types';
+
+  // Inject the question bank. Kept in a script tag rather than bundled so the
+  // page ships no framework and the data stays readable in view-source.
+  const QUESTIONS = JSON.parse(
+    document.getElementById('question-data')!.textContent!,
+  ) as any[];
+
+  const STORAGE_KEY = 'mathsguru:v1:3.2';
+  const ATTEMPT_KEY = 'mathsguru:v1:3.2:attempts';
+
+  const el = <T extends HTMLElement>(id: string) =>
+    document.getElementById(id) as T;
+
+  const ui = {
+    progressText: el<HTMLSpanElement>('progress-text'),
+    streakText: el<HTMLSpanElement>('streak-text'),
+    progressFill: el<HTMLDivElement>('progress-fill'),
+    why: el<HTMLParagraphElement>('why-this-question'),
+    stage: el<HTMLParagraphElement>('stage-label'),
+    prompt: el<HTMLParagraphElement>('question-prompt'),
+    math: el<HTMLParagraphElement>('question-math'),
+    completion: el<HTMLDivElement>('completion-start'),
+    completionText: el<HTMLParagraphElement>('completion-text'),
+    answer: el<HTMLInputElement>('answer'),
+    check: el<HTMLButtonElement>('check'),
+    hint: el<HTMLButtonElement>('hint'),
+    hints: el<HTMLDivElement>('hints'),
+    feedback: el<HTMLDivElement>('feedback'),
+    nextRow: el<HTMLDivElement>('next-row'),
+    next: el<HTMLButtonElement>('next'),
+    summary: el<HTMLParagraphElement>('summary'),
+  };
+
+  let state = loadState();
+  let attempts = loadAttempts();
+  let current: any = null;
+  let usedHint = false;
+  let revealedHints = 0;
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch {
+      // Private browsing, or storage disabled. Fall through to fresh state.
+    }
+    return emptyState('3.2');
+  }
+
+  function loadAttempts() {
+    try {
+      const raw = localStorage.getItem(ATTEMPT_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch {
+      /* ignore */
+    }
+    return [];
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      localStorage.setItem(ATTEMPT_KEY, JSON.stringify(attempts.slice(-200)));
+    } catch {
+      // If we cannot persist, the session still works. Just do not crash.
+    }
+  }
+
+  function renderProgress() {
+    const pct = masteryPercent(state, QUESTIONS.length);
+    ui.progressText.textContent =
+      pct === 100
+        ? `All ${QUESTIONS.length} mastered`
+        : `${state.mastered.length} of ${QUESTIONS.length} mastered`;
+    ui.progressFill.style.width = `${pct}%`;
+
+    const streak = computeStreak(state.practiceDates);
+    ui.streakText.textContent =
+      streak > 0 ? `${streak} day${streak === 1 ? '' : 's'} in a row` : '';
+  }
+
+  function next() {
+    const choice = chooseNext(QUESTIONS, attempts);
+    if (!choice) {
+      ui.summary.hidden = false;
+      ui.summary.textContent = 'No questions left. Come back tomorrow.';
+      return;
+    }
+
+    current = choice.question;
+    usedHint = false;
+    revealedHints = 0;
+
+    ui.why.textContent = choice.because;
+    ui.stage.textContent =
+      current.stage === 'completion'
+        ? 'Completion - we have started this one'
+        : 'On your own';
+    ui.prompt.textContent = current.prompt;
+
+    // MathML is rendered client-side by MathJax, so re-typeset after a change.
+    ui.math.innerHTML = current.math ? `\\[${current.math}\\]` : '';
+    ui.math.hidden = !current.math;
+
+    ui.completion.hidden = current.stage !== 'completion';
+    ui.completionText.textContent = current.completionStart ?? '';
+
+    ui.answer.value = '';
+    ui.answer.disabled = false;
+    // check() disables both fields. They must be re-enabled here or the student
+    // is stuck on question two with a dead button.
+    ui.check.disabled = false;
+    ui.hints.innerHTML = '';
+    ui.hints.hidden = true;
+    ui.hint.hidden = !(current.hints && current.hints.length > 0);
+    ui.feedback.innerHTML = '';
+    ui.feedback.removeAttribute('data-tone');
+    ui.nextRow.hidden = true;
+    ui.summary.hidden = true;
+
+    ui.answer.focus();
+  }
+
+  function showHints() {
+    const list = current.hints ?? [];
+    if (revealedHints >= list.length) return;
+
+    const item = document.createElement('li');
+    item.textContent = list[revealedHints];
+    ui.hints.appendChild(item);
+    revealedHints += 1;
+    ui.hints.hidden = false;
+
+    // Asking for help means you have not mastered it yet. That is the whole
+    // point of tracking usedHint.
+    usedHint = true;
+
+    if (revealedHints >= list.length) ui.hint.hidden = true;
+    ui.answer.focus();
+  }
+
+  function check() {
+    if (!current) return;
+
+    const result = mark(current, ui.answer.value, usedHint);
+
+    ui.feedback.setAttribute('data-tone', result.correct ? 'good' : 'nudge');
+    ui.feedback.innerHTML = '';
+
+    const title = document.createElement('p');
+    title.className = 'feedback-title';
+    title.textContent = result.correct ? 'That is right' : 'Not quite yet';
+    ui.feedback.appendChild(title);
+
+    const parts = document.createElement('ul');
+    parts.className = 'feedback-parts';
+
+    if (result.correct) {
+      const li = document.createElement('li');
+      li.textContent = result.message;
+      parts.appendChild(li);
+    } else if (result.diagnosis) {
+      // The diagnosis IS the product. Name what went wrong, why, and the fix.
+      const d = result.diagnosis;
+      const rows: [string, string][] = [
+        ['What happened', d.say],
+        ['Why', d.because],
+        ['Try instead', d.instead],
+      ];
+      for (const [label, value] of rows) {
+        const li = document.createElement('li');
+        const strong = document.createElement('strong');
+        strong.textContent = label;
+        li.appendChild(strong);
+        li.appendChild(document.createTextNode(value));
+        parts.appendChild(li);
+      }
+    } else {
+      const li = document.createElement('li');
+      li.textContent = result.message;
+      parts.appendChild(li);
+    }
+
+    ui.feedback.appendChild(parts);
+
+    // Record. Only a correct, un-hinted, independent answer counts as mastery.
+    attempts.push({
+      questionId: current.id,
+      given: normalise(ui.answer.value),
+      correct: result.correct,
+      at: Date.now(),
+      usedHint,
+    });
+
+    state = record(state, current, result);
+    save();
+    renderProgress();
+
+    ui.answer.disabled = true;
+    ui.check.disabled = true;
+    ui.hint.hidden = true;
+    ui.nextRow.hidden = false;
+    ui.next.focus();
+  }
+
+  function finish() {
+    const pct = masteryPercent(state, QUESTIONS.length);
+    ui.summary.hidden = false;
+
+    if (pct === 100) {
+      ui.summary.innerHTML =
+        '<strong>Every question mastered.</strong> Come back tomorrow to keep the streak going. Spacing is what makes this stick, not doing it all in one go.';
+    } else {
+      ui.summary.innerHTML = `You have mastered <strong>${state.mastered.length} of ${QUESTIONS.length}</strong>. The rest come back later, not now. That is on purpose.`;
+    }
+    ui.summary.focus?.();
+  }
+
+  ui.check.addEventListener('click', check);
+  ui.hint.addEventListener('click', showHints);
+  ui.next.addEventListener('click', () => {
+    if (masteryPercent(state, QUESTIONS.length) === 100) {
+      finish();
+      return;
+    }
+    next();
+  });
+
+  // Enter submits. Students will try this constantly.
+  ui.answer.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      if (!ui.nextRow.hidden) ui.next.click();
+      else check();
+    }
+  });
+
+  renderProgress();
+  next();
+</script>
+
+<script type="application/json" id="question-data" set:html={JSON.stringify(payload)} is:inline />

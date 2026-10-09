@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+
+export { getCollection } from 'astro:content';
+---
+
+<Base
+  title="MathsGuru"
+  description="Free maths lessons for Sri Lankan students, Grade 6 to O-Level. Syllabus-matched, explained patiently, works on a phone."
+>
+  <div class="hero">
+    <h1>Maths that makes sense</h1>
+    <p class="lede">
+      Free maths lessons for Sri Lankan students, Grade 6 to O-Level. We follow
+      the NIE syllabus exactly, explain every step, and tell you what went wrong
+      when you get something wrong.
+    </p>
+  </div>
+
+  <div class="promise">
+    <h2 style="margin-top:0">What you get here</h2>
+    <ul>
+      <li>
+        <strong>Every step explained.</strong> Not just what to do, but why that
+        step works.
+      </li>
+      <li>
+        <strong>Real diagnoses.</strong> Get something wrong and we say exactly
+        what went wrong and what to do instead. Never just "incorrect".
+      </li>
+      <li>
+        <strong>Works on your phone.</strong> Low data, no downloads, no sign-up.
+      </li>
+      <li>
+        <strong>Free, and staying free.</strong> We will never charge a student
+        for a lesson.
+      </li>
+    </ul>
+  </div>
+
+  <h2>Start here</h2>
+
+  <div class="card">
+    <h3>Grade 6 &mdash; Equivalent fractions</h3>
+    <div class="card-meta">
+      <span class="tag">NIE competency 3.2</span>
+      <span class="tag">8 min lesson</span>
+      <span class="tag">Term 2</span>
+    </div>
+    <p>
+      Two different fractions can show exactly the same amount. This is the
+      step that unlocks adding fractions, decimals, ratio and percentage, so it
+      is worth getting right now.
+    </p>
+    <div class="button-row">
+      <a class="button" href="/grade/6/3-2">Read the lesson</a>
+      <a class="button button-quiet" href="/grade/6/3-2/practice">
+        Go straight to practice
+      </a>
+    </div>
+  </div>
+
+  <h2>Coming soon</h2>
+
+  <div class="card">
+    <h3>Grade 6 &mdash; Adding and subtracting fractions</h3>
+    <div class="card-meta">
+      <span class="tag">NIE competency 3.4</span>
+      <span class="tag">Planned</span>
+    </div>
+    <p>Once equivalent fractions is solid, this is the natural next step.</p>
+  </div>
+
+  <div class="card">
+    <h3>Grade 6 &mdash; Ratio and rate</h3>
+    <div class="card-meta">
+      <span class="tag">NIE competency 4.1</span>
+      <span class="tag">Planned</span>
+    </div>
+    <p>Everyday uses: discounts, speeds, mixing, sharing things out fairly.</p>
+  </div>
+</Base>

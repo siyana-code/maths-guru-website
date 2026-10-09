@@ -1,0 +1,160 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Helping Sri Lankan students actually understand mathematics.' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <title>{title} | MathsGuru</title>
+    <meta name="description" content={description} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!--
+      KaTeX, loaded only on pages that contain maths.
+
+      Chosen over MathJax after testing: MathJax 4's standalone bundle loads and
+      exposes typesetPromise but then silently processes nothing, leaving the
+      math/tex scripts untouched with no error. KaTeX auto-render was verified
+      working and emits real MathML alongside the visual output, which is the
+      accessibility property we need - a screen reader gets navigable structured
+      maths instead of a screenshot. See astro.config.mjs for the full reasoning.
+
+      The +async script is deliberate: it preserves execution order (katex.js,
+      then auto-render.js) so renderMathInElement is defined when we call it.
+      defer would also preserve order but waits for parsing; async here is fine
+      because auto-render only needs the two preceding scripts.
+    -->
+    <script>
+      (function () {
+        // Cheapest possible check first. Most pages have no maths.
+        if (!document.querySelector('.math-block, .katex, .math-inline')) {
+          // Also check for raw delimiters, since that is what auto-render reads.
+          if (!document.body.textContent.match(/\$\$|\\\(/)) return;
+        }
+
+        var CSS =
+          'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css';
+        if (!document.querySelector('link[data-katex]')) {
+          var link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = CSS;
+          link.setAttribute('data-katex', '');
+          document.head.appendChild(link);
+        }
+
+        function whenReady(names: string[], done: () => void) {
+          let queue = names.slice();
+          (function next() {
+            const name = queue[0];
+            if (!name) {
+              done();
+              return;
+            }
+            const poll = window.setInterval(() => {
+              if ((window as unknown as Record<string, unknown>)[name]) {
+                window.clearInterval(poll);
+                queue.shift();
+                next();
+              }
+            }, 20);
+            // Give up after 15s rather than poll forever on a bad connection.
+            window.setTimeout(() => {
+              if (queue[0] === name) {
+                window.clearInterval(poll);
+                queue.shift();
+                next();
+              }
+            }, 15000);
+          })();
+        }
+
+        whenReady(['renderMathInElement'], function () {
+          window.renderMathInElement?.(document.body, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '\\(', right: '\\)', display: false },
+            ],
+            // Never throw on a malformed formula. A student should still be able
+            // to read the rest of the lesson.
+            throwOnError: false,
+            // Keep the TeX readable as a fallback if rendering fails.
+            errorColor: '#b45309',
+          });
+        });
+
+        var s1 = document.createElement('script');
+        s1.src =
+          'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js';
+        s1.async = false;
+        document.head.appendChild(s1);
+
+        var s2 = document.createElement('script');
+        s2.src =
+          'https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js';
+        s2.async = false;
+        s2.onload = function () {
+          // auto-render defines renderMathInElement; poll until it exists.
+        };
+        document.head.appendChild(s2);
+      })();
+    </script>
+
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/">MathsGuru</a>
+        <nav aria-label="Main">
+          <a href="/grade/6">Grade 6</a>
+          <a href="/grade/11">Grade 11</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="wrap">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <p>
+          Built for Sri Lankan students, Grades 6 to 11. Free, and it will stay free.
+        </p>
+        <p>
+          Content follows the NIE syllabus. Found a mistake?
+          <a href="https://github.com/siyana-code/maths-guru-website/issues">Tell us</a>.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    background: #0f172a;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    z-index: 100;
+  }
+  .skip:focus {
+    left: 0;
+  }
+</style>

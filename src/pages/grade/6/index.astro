@@ -1,0 +1,80 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+/**
+ * Grade lives on the competency, not the lesson. A lesson belongs to exactly
+ * one competency, so deriving grade from the competency keeps the two from
+ * ever disagreeing - which is the kind of drift that quietly breaks a
+ * syllabus-driven site.
+ */
+const competencies = await getCollection('competency', (c) => c.data.grade === 6);
+const grade6Ids = new Set(competencies.map((c) => c.data.id));
+
+const lessons = await getCollection('lesson', (l) =>
+  grade6Ids.has(l.data.competencyId),
+);
+---
+
+<Base
+  title="Grade 6 Mathematics"
+  description="Grade 6 mathematics lessons following the NIE syllabus. Free, explained step by step, works on a phone."
+>
+  <h1>Grade 6 Mathematics</h1>
+  <p class="lede">
+    Grade 6 is the first year of secondary school, and the year the maths
+    foundations are laid. We follow the NIE syllabus order, so everything here
+    lines up with what your teacher is teaching.
+  </p>
+
+  <h2>Lessons</h2>
+
+  {
+    lessons.length === 0 ? (
+      <p>No lessons yet.</p>
+    ) : (
+      lessons.map((lesson) => (
+        <div class="card">
+          <h3>{lesson.data.title}</h3>
+          <div class="card-meta">
+            <span class="tag">Competency {lesson.data.competencyId}</span>
+            <span class="tag">{lesson.data.minutes} min</span>
+            <span class="tag">Term {competencies.find((c) => c.data.id === lesson.data.competencyId)?.data.term}</span>
+          </div>
+          <p>{lesson.data.description}</p>
+          <div class="button-row">
+            <a class="button" href={`/grade/6/${lesson.data.competencyId}`}>
+              Read the lesson
+            </a>
+            <a
+              class="button button-quiet"
+              href={`/grade/6/${lesson.data.competencyId}/practice`}
+            >
+              Practise
+            </a>
+          </div>
+        </div>
+      ))
+    )
+  }
+
+  <h2>Coming soon</h2>
+
+  <div class="card">
+    <h3>Adding and subtracting fractions</h3>
+    <div class="card-meta">
+      <span class="tag">Competency 3.4</span>
+      <span class="tag">Planned</span>
+    </div>
+    <p>The natural next step after equivalent fractions.</p>
+  </div>
+
+  <div class="card">
+    <h3>Ratio and rate</h3>
+    <div class="card-meta">
+      <span class="tag">Competency 4.1</span>
+      <span class="tag">Planned</span>
+    </div>
+    <p>Discounts, speeds, mixing, and sharing things out fairly.</p>
+  </div>
+</Base>
