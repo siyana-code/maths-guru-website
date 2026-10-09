@@ -23,9 +23,7 @@ will forget why you made a decision. This folder is the memory.
 | 00 | [Research summary](./00-research-summary.md) | What did we learn, and what are we building? |
 | 01 | [Our target student](./01-target-student.md) | Who exactly are we teaching? |
 | 02 | [Sri Lankan education system](./02-education-system.md) | How does school work here? |
-| 03 | [Grade 6 syllabus](./03-grade6-syllabus.md) | What must a Grade 6 student learn? |
-| 04 | [O-Level maths syllabus](./04-olevel-syllabus.md) | What must an O-Level student learn? |
-| 05 | [Exam and past papers](./05-exams-and-papers.md) | How are students actually tested? |
+| 05 | [Exam and past papers](./05-exams-and-papers.md) | How are students actually tested, and when? |
 
 ### Market and product
 
@@ -40,6 +38,18 @@ will forget why you made a decision. This folder is the memory.
 | 12 | [Getting students](./12-getting-students.md) | How will anyone find it? |
 | 13 | [Roadmap](./13-roadmap.md) | What order do we do this in? |
 | 14 | [Open questions](./14-open-questions.md) | What we still do not know. |
+
+### Still to write
+
+| Document | What it will answer |
+| --- | --- |
+| Grade 6 syllabus | What must a Year 7 student actually learn? |
+| O-Level syllabus | What are the branches and main components? |
+
+**To be written directly from NIE source documents** (nie.lk), not from
+secondary summaries. Getting the topic list and order right matters more than
+anything else in this folder, because it decides the whole structure of the
+site.
 
 ### Reference
 

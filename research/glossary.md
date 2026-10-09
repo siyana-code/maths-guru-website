@@ -9,11 +9,18 @@ English, so that everything else in this folder is easy to read.
 
 **Ordinary Level.** The national exam students sit at the end of **Grade 11**.
 
-- It is taken in **May, June and July**, and the results come out in
-  August or September.
-- It is the main checkpoint. Whether a student can get into a university,
-  a diploma, or an apprenticeship depends mostly on this result.
+- The main checkpoint. Whether a student can get into a university, a diploma,
+  or an apprenticeship depends mostly on this result.
+- **The exam month is normally December.** But it has been badly disrupted
+  recently, so always check the published calendar before planning anything.
+  O/L 2026 is scheduled for 8-17 December 2026. See
+  [Exams and past papers](./05-exams-and-papers.md).
+- Results come roughly 3-4 months after the paper. A December exam means
+  results in March or April.
 - We write it as "O-Level" in full, or "O/L" in short.
+
+> **Planning tip:** because the exam date moves, never build a study schedule
+> that hard-codes the exam month. Always count back from the published date.
 
 ### AL / A-Level
 

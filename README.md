@@ -36,10 +36,15 @@ free or near-free for students.**
 Early stage. We are building the research foundation first.
 
 - [x] Project structure and Git workflow set up
-- [ ] Research phase ([`research/`](./research/))
+- [x] Research phase complete ([`research/`](./research/))
+- [ ] Talk to 10 students and 10 parents (the next step, and the most important)
 - [ ] Technology chosen
 - [ ] First lesson pages built
 - [ ] Students
+
+**The research is done and it says one thing clearly:** one topic, taught
+properly, beats thirty topics taught badly. Before writing any code we should
+talk to ten students and ten parents, and write one worked example by hand.
 
 See [`research/`](./research/) for the full picture of where this is going.
 
