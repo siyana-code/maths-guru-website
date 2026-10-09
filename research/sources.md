@@ -19,29 +19,87 @@ or an SEO blog, the document it supports says so.
 
 ---
 
-## Official Sri Lankan sources
+## Primary documents: NIE and the Department of Examinations
+
+**These are the most important sources in this folder.** Every factual error we
+made came from a secondary source. Every correction came from one of these.
+
+### NIE Teacher's Guides (each contains the full syllabus)
+
+| Grade | Document | Year |
+| --- | --- | --- |
+| **6** | [e6tim109.pdf](https://nie.lk/pdffiles/tg/e6tim109.pdf) | 2015 |
+| 7 | [e7tim168.pdf](https://nie.lk/pdffiles/tg/e7tim168.pdf) | 2016 |
+| 8 | [eGr8_TG Maths.pdf](https://nie.lk/pdffiles/tg/eGr8_TG%20Maths.pdf) | 2017 |
+| 9 | [eGr09TG Maths.pdf](https://nie.lk/pdffiles/tg/eGr09TG%20Maths.pdf) | 2018 |
+| 10 | [e10tim109.pdf](https://nie.lk/pdffiles/tg/e10tim109.pdf) | 2015 |
+| **11** | [Grade 11 Mathematics Teacher Guide.pdf](https://nie.lk/pdffiles/tg/Grade%2011%20Mathematics%20Teacher%20Guide.pdf) | 2016 |
+| 12 | [Maths](https://nie.lk/pdffiles/tg/eGr12TG%20Maths.pdf) · [Combined](https://nie.lk/pdffiles/tg/eGr12TG%20Com%20Maths.pdf) | 2017 |
+| 13 | [Maths](https://nie.lk/pdffiles/tg/eGr13TG%20Maths.pdf) · [Combined](https://nie.lk/pdffiles/tg/eGr13TG%20ComMathamatic.pdf) | 2018 |
+
+**There is no standalone syllabus PDF.** NIE states: *"Most of the syllabi are
+attached in the Teachers' Guides."* Chapter 1 is the competency table.
+
+Indexes: [syllabi](https://nie.lk/selesyll) · [teacher's guides](https://nie.lk/seletguide) · [other materials](https://nie.lk/showom)
+
+### Department of Examinations
+
+| Resource | URL |
+| --- | --- |
+| **Past papers index** | [doenets.lk/pastpapers](https://www.doenets.lk/pastpapers) |
+| **Resource API** | `https://www.doenets.lk/cms/api/resources?isEnabled=1&rowCount=0&type=PAPA` |
+| **2025 O/L Maths paper** | [32 E-I, E-II](https://www.doenets.lk/images/resources/PAPA/2025(2026)32EI,II_compressed_1787294306437.pdf) |
+| **2020 marking scheme** | [32-maths(english)](https://www.doenets.lk/images/resources/EVRE/32-maths(english)_1644214247342.pdf) |
+| **O/L 2025 results report** | [Performance of Candidates](https://www.doenets.lk/images/resources/STAT/Performance%20of%20candidates%20%E2%80%93%202025%20OL%20_1782390949227.pdf) |
+| **Exam calendar** | [doenets.lk/examcalendar](https://www.doenets.lk/examcalendar) |
+
+API types: `PAPA` past papers (1,505 entries) · `EVRE` marking schemes · `STAT`
+performance · `EXCA` calendar
+
+**The official domain is `doenets.lk`, not `exams.gov.lk`.** Several news sites
+get this wrong, and so did our first draft.
+
+### Policy documents
+
+| Document | Used for |
+| --- | --- |
+| **[NEC National Education Policy Framework 2020-2030](https://www.nec.gov.lk/wp-content/uploads/2022/10/NATIONAL-EDUCATION-POLICY-FRAMEWORK-2020-2030_Full-Text.pdf)** | **Primary.** Grade naming, 13-year structure, Grade 6 as rationalized entry point, Annual School Census 2020 medium counts, the three public exams |
+| [MoE Circular 23/2017: School-Based Assessment](https://www.doenets.lk/documents/downloads/other-notices/3.circular%20final%20eng.pdf) | SBA stages, and the exclusion of mathematics |
+| [Education Publications textbooks](http://www.edupub.gov.lk/BooksDownload.php) | Free official textbooks |
+
+### NIE availability caveat
+
+**English-medium guides download freely. Sinhala and Tamil versions appear
+unavailable** - the pages list grade options but returned no files for Grade 6
+or 11 mathematics when queried.
+
+This matters because NIE publishes maths vocabulary in English, and teachers
+build on the English terms even in Sinhala and Tamil classrooms. **Check before
+promising trilingual content aligned to NIE terminology.**
+
+---
+
+## Secondary Sri Lankan sources
 
 | Source | Used for |
 | --- | --- |
-| [NEC: Medium of Instruction recommendations](https://nec.gov.lk/wp-content/uploads/2025/05/Recommendations-for-the-National-Policy-on-Medium-of-Instruction-in-Schools.pdf) | Bilingual programme, English-medium maths from Grade 6, medium policy |
+| [NEC: Medium of Instruction recommendations](https://nec.gov.lk/wp-content/uploads/2025/05/Recommendations-for-the-National-Policy-on-Medium-of-Instruction-in-Schools.pdf) | Bilingual programme, English-medium maths from Grade 6 |
 | [NEC: Bilingual education situational analysis (2024)](https://nec.gov.lk/wp-content/uploads/2024/07/RP_GE_2024_Situational-Analysis-of-Bilingual-Education-Approach-in-Sri-Lankan-Government-and-Government-Assisted-Schools.pdf) | Bilingual implementation |
-| [e-thaksalawa (Ministry of Education)](https://e-thaksalawa.moe.gov.lk/lcms/course/view.php?id=842) | 208 Grade 10 Sinhala maths lessons, official course structure |
-| [British Council: ELT in Sri Lanka (2022)](https://www.teachingenglish.org.uk/sites/teacheng/files/2022-04/ELT%20learning%20and%20assessment%20in%20Sri%20Lanka_April%202022_new2.pdf) | School counts by medium, enrolment figures |
-| [IDE / JICA education system report](https://www.ide.go.jp/library/Japanese/Publish/Reports/InterimReport/2013/pdf/C02_ch7.pdf) | System structure, English proficiency data |
-| [Cambridge Prisms: adolescent mental health (2025)](https://www.cambridge.org/core/journals/global-mental-health/article/prevalence-and-determinants-of-mental-health-problems-experienced-by-schoolgoing-adolescents-in-sri-lanka/6A1AE425D64C5C2AB7E72047D1C670B6) | Mental health context, Gampaha district survey |
+| [e-thaksalawa (Ministry of Education)](https://e-thaksalawa.moe.gov.lk/lcms/course/view.php?id=842) | 208 Grade 10 Sinhala maths lessons |
+| [British Council: ELT in Sri Lanka (2022)](https://www.teachingenglish.org.uk/sites/teacheng/files/2022-04/ELT%20learning%20and%20assessment%20in%20Sri%20Lanka_April%202022_new2.pdf) | School counts by medium |
+| [IDE / JICA education system report](https://www.ide.go.jp/library/Japanese/Publish/Reports/InterimReport/2013/pdf/C02_ch7.pdf) | English proficiency data |
+| [Cambridge Prisms: adolescent mental health (2025)](https://www.cambridge.org/core/journals/global-mental-health/article/prevalence-and-determinants-of-mental-health-problems-experienced-by-schoolgoing-adolescents-in-sri-lanka/6A1AE425D64C5C2AB7E72047D1C670B6) | Mental health context |
 
-### Exam calendar - needs re-verification
+### Exam calendar
 
-These were used to establish that O/L dates have moved. **Re-check before relying
-on any specific date.**
+Used to establish that O/L dates have moved. **Check the current DoE calendar
+before relying on any specific date.**
 
 - [Gazette: O/L 2026 dates](https://www.gazette.lk/2025/09/gce-o-l-examination-2026-dates.html)
-- [Daily Mirror: O/L 2025/2026 exam dates](https://www.dailymirror.lk/breaking-news/G-C-E-OL-2025-2026-exam-to-be-held-from-February-17-to-26/108-331890)
+- [Daily Mirror: O/L 2025/2026 dates](https://www.dailymirror.lk/breaking-news/G-C-E-OL-2025-2026-exam-to-be-held-from-February-17-to-26/108-331890)
 - [Guruwaraya: O/L 2026 timetable](https://www.guruwaraya.lk/2026/10/gce-ol-examination-timetable-2026.html)
-- [examresults.lk: national exam schedule](https://examresults.lk/home/exam-calendars/time-tables/sri-lanka-national-examination-schedule-2026/)
 
-**The Department of Examinations (exams.gov.lk) is the authority. These are
-news reports of gazette notices.**
+These are news reports of gazette notices. **[doenets.lk/examcalendar](https://www.doenets.lk/examcalendar) is the authority.**
 
 ---
 
@@ -251,7 +309,10 @@ Recording these so we do not search again for something that does not exist.
 | Whether CRA was replicated in South Asia | **No evidence** |
 | A verified market size for private maths tutoring | **Only household counts exist**, not student counts |
 | Sinhala/Tamil screen-reader TTS quality | **No data** |
-| Authoritative exam structure (marks, MCQ count) | See the exam calendar verification task |
+| Authoritative exam structure (marks, MCQ count) | **RESOLVED.** Verified from the official 2025 paper and 2020 marking scheme |
+| Numeric O/L grade boundaries | **Still unresolved.** No official source. Third-party sources conflict. Do not publish |
+| Whether the 2016 Grade 11 Teacher's Guide is current | No explicit statement. DoE labels papers "New syllabus" from 2016/2017 |
+| Sinhala/Tamil NIE Teacher's Guides | Pages exist but returned no files for Grade 6/11 maths |
 
 ---
 

@@ -118,6 +118,36 @@ Tamil, with access to roughly 10% of national English proficiency.
 
 ---
 
+## Corrections we had to make
+
+Getting the syllabus from primary NIE documents and the actual exam paper
+corrected several errors we had made from secondary sources:
+
+| We had said | Actually |
+| --- | --- |
+| O/L exams run May-July | **December.** 2026 is 8-17 December |
+| O/L has Pure, Applied and Combined Maths | **One subject, code 32.** Those are A-Level |
+| The paper is worth 100 marks | **200 marks.** Two papers of 100 |
+| MCQs are 1 mark each | **2 marks each** |
+| Pass mark is 50 for a credit | **Unverified.** No official source. Do not publish it |
+| Grade 6 is officially "Year 7" | **It is "Grade 6".** Year 7 is a UK mapping |
+| Sinhala/Tamil students sit the English paper | **They sit it in their own language** |
+
+> **The pattern is the lesson: every error came from a secondary source, and
+> every correction came from a primary document.** For anything about the exam
+> or syllabus, go to NIE and the Department of Examinations directly.
+
+Two facts we only learned from the official 2025 paper:
+
+- **Half of Paper I is not multiple choice.** 25 MCQs at 2 marks, then 5
+  structured questions at 10 marks each. Students who revise only for MCQ are
+  preparing for half the paper.
+- **The syllabus gives equivalent fractions ONE 40-minute period.** It is the
+  gateway to adding fractions, ratio, percentage and eventually algebra. That
+  is a specific, official, defensible place for us to help.
+
+---
+
 ## What the tutoring market tells us
 
 **We are not competing with tutors, and we should not try to.**

@@ -67,13 +67,25 @@ wrong assumption about what students struggle with.
 
 **Time: 4-6 weeks.**
 
-Pick **one Grade 6 topic**. Fractions is the obvious candidate because:
+Pick **one Grade 6 topic**. **Equivalent fractions (competency 3.2)** is now the
+best-evidenced choice, because the official syllabus settles it for us:
 
-- It is where the gap between confident and struggling students opens
-- Almost every later topic depends on it
-- Fractions are the classic example of something taught badly everywhere
-- It suits the Concrete-Representational-Abstract approach
-- Parents remember struggling with fractions
+- **The NIE Teacher's Guide allocates it exactly ONE 40-minute period.**
+- It is the gateway to adding and subtracting fractions (3.4), decimals (3.5),
+  ratio (4.1), and eventually percentage and algebra at Grade 11.
+- It depends on competency 1.6, factors and multiples up to 100 - so a student
+  weak there cannot do it, which is exactly our target student's situation.
+- It suits the Concrete-Representational-Abstract approach, and the official
+  area lesson (8.1) already uses a 1cm x 1cm grid, so the syllabus itself is
+  hands-on.
+
+Full syllabus context in
+[03-grade6-syllabus.md](./03-grade6-syllabus.md).
+
+> **We are not choosing the topic because fractions are hard. We are choosing
+> it because the official syllabus gives it one lesson, and it unlocks four
+> later competencies.** That is a defensible, specific, sourced reason - not a
+> hunch.
 
 ### What to build
 
@@ -187,9 +199,11 @@ students**. Now, and only now, we expand.
 
 ### Order of expansion
 
-1. **More Grade 6 topics** - same engine, same quality
+1. **More Grade 6 topics** - 25 units, 157 periods. Follow the official NIE
+   sequence in [03-grade6-syllabus.md](./03-grade6-syllabus.md)
 2. **Grade 7-8** - when we are confident about prerequisite tracking
-3. **Grade 9-11** - the O-Level audience, who need past papers too
+3. **Grade 9-11** - the O-Level audience (25 units, 190 periods), who need past
+   papers too. See [04-olevel-syllabus.md](./04-olevel-syllabus.md)
 4. **Sinhala** - this should come earlier than it does here, but we need to
    validate the model first
 5. **Tamil** - the biggest untapped opportunity, and the biggest commitment
@@ -297,8 +311,9 @@ Concretely, this week:
 
 1. **Find ten students and ten parents to talk to.** Through our own network,
    tuition contacts, or a teacher we know.
-2. **Choose one Grade 6 topic.** Fractions, unless the conversations say
-   otherwise.
+2. **Choose one Grade 6 topic.** The syllabus points at equivalent fractions
+   (3.2) - one 40-minute period, and it unlocks four later competencies. Unless
+   the conversations say otherwise.
 3. **Write one worked example by hand, the way we would explain it to a stuck
    student sitting next to us.** If that is not excellent, no framework will
    save it.

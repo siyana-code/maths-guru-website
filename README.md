@@ -25,7 +25,7 @@ free or near-free for students.**
 
 | | |
 | --- | --- |
-| **Students** | Grade 6 through Grade 11 (Year 7 to Year 11) |
+| **Students** | Grade 6 through Grade 11 |
 | **Location** | Sri Lanka |
 | **Languages** | English first, Sinhala and Tamil planned |
 | **Device** | Mobile-first, because that is how most students get online |
