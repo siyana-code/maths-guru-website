@@ -1,0 +1,27 @@
+# Normalise line endings in the repo, check out LF everywhere.
+* text=auto eol=lf
+
+# Mark binary files so Git never tries to diff them.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+*.mp4 binary
+*.mp3 binary
+*.zip binary
+
+# Keep generated lockfiles out of language-server diffs.
+package-lock.json linguist-generated=true -diff
+pnpm-lock.yaml linguist-generated=true -diff
+yarn.lock linguist-generated=true -diff
+bun.lockb linguist-generated=true -diff
+
+# Research docs are prose, not code - mark them for the diff view.
+*.md linguist-documentation=true

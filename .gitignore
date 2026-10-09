@@ -1,0 +1,107 @@
+# ---------------------------------------------------------------------------
+# MathsGuru Website - .gitignore
+# Covers Node, Python, and static-site toolchains until the stack is decided.
+# ---------------------------------------------------------------------------
+
+# --- Secrets & local environment -------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets.json
+service-account*.json
+
+# --- Node / JavaScript ------------------------------------------------------
+node_modules/
+.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+.eslintcache
+.cache/
+coverage/
+*.tsbuildinfo
+
+# --- Python -----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+htmlcov/
+.tox/
+
+# --- Astro / Next.js / Nuxt / SvelteKit ------------------------------------
+.astro/
+.next/
+.nuxt/
+.svelte-kit/
+.output/
+.vercel/
+.netlify/
+.wrangler/
+.swr/
+
+# --- Static site generators -------------------------------------------------
+public/
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# --- Go / Rust (only if used later) -----------------------------------------
+/target/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# --- Editors & OS -----------------------------------------------------------
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+*.sublime-*
+
+# --- Logs & temp ------------------------------------------------------------
+logs/
+*.log
+tmp/
+temp/
+.DS_Store
+
+# --- Local content drafts that must never be published ---------------------
+research/_drafts/
+*.local.md
