@@ -26,20 +26,24 @@ But the exam system is fierce.
 There are about **3.6 million students** in Grades 1-11, and about **421,000**
 in Grades 12-13.
 
-### The naming trap
+### The naming trap - and a correction
 
-This trips up everyone, including parents and students:
+**Sri Lanka calls it Grade 6. So do Sinhala and Tamil speakers.**
 
-| What people say | Official name |
-| --- | --- |
-| Grade 5 | Year 6 |
-| **Grade 6** | **Year 7** |
-| Grade 10 | Year 11 |
-| Grade 11 | Year 12 |
+- Sinhala: **6 ශ්‍රේණිය** (sixth year)
+- Tamil: **ஆறாம் வகுப்பு** (sixth class)
 
-**When someone says "Grade 6", they mean Year 7.** Use the name families use,
-but know the official one, because the official one is what appears on the
-syllabus.
+The National Education Commission has explicitly corrected this misconception:
+
+> *"it uses **"Grades" as opposed to "Years"**... because the kindergarten year
+> in Sri Lanka is designated as Grade 1... **This has often created a
+> misconception.**"*
+
+"Year 7" is the **UK equivalent** used in international comparisons. It is not a
+Sri Lankan name, and **"Year 6" in Sinhala or Tamil means Grade 5**.
+
+**Our earlier research claimed Grade 6 was officially called Year 7. That was
+wrong.** Use "Grade 6" - it is correct in every language.
 
 ---
 
@@ -51,14 +55,20 @@ A child's **medium** is chosen early and usually stays fixed for life.
 
 | Medium | Number of schools |
 | --- | --- |
-| Sinhala only | **6,357** |
-| Tamil only | **3,042** |
+| Sinhala only | **6,357** (62.6% of schools, **73.3% of students**) |
+| Tamil only | **3,042** (30.0% of schools, **24.3% of students**) |
 | Sinhala + English bilingual | 524 |
 | Tamil + English bilingual | 157 |
 | Trilingual | 33 |
 
-Only about **1.4%** of students study in English medium, and a third of those
-are in the Western Province.
+From the **Annual School Census 2020**, via the NEC National Education Policy
+Framework. Note the gap between schools and students: Tamil schools are on
+average smaller, so Tamil is **30% of schools but 24% of students**.
+
+> **Correction to our earlier research:** we wrote that Sinhala and Tamil medium
+> students sit the English Maths paper. **They do not.** The Department of
+> Examinations publishes every O-Level paper in Sinhala, Tamil and English, and
+> students sit the exam in their own medium.
 
 ### Why this matters more than it looks
 
@@ -258,10 +268,11 @@ count, and get the student to do it daily.
 
 | Fact | Why it matters |
 | --- | --- |
-| "Grade 6" = Year 7 | Use their name, know ours |
+| It is "Grade 6", in every language | "Year 7" is a UK mapping. Avoid it |
 | O-Level decides everything | It drives all student behaviour |
-| Maths moves to English from Grade 6 | The core language problem |
-| Tamil medium is ~25% of schools | And ~1% of online content |
+| O-Level Maths = one subject, 200 marks | Not Pure/Applied/Combined. Those are A-Level |
+| Sinhala is 73% of students, Tamil 24% | Only ~1% of online maths content is Tamil |
+| Exam is sat in the student's own medium | Not always English |
 | Z-scores are district-relative | Explains tuition culture |
 | Exam dates move | Never hard-code them |
 | School ends ~1:30pm | Small gaps only |
@@ -271,6 +282,9 @@ count, and get the student to do it daily.
 
 ## Sources
 
+- **[NEC National Education Policy Framework 2020-2030](https://www.nec.gov.lk/wp-content/uploads/2022/10/NATIONAL-EDUCATION-POLICY-FRAMEWORK-2020-2030_Full-Text.pdf)** - **primary source**. Grade naming, 13-year structure, Annual School Census 2020 medium counts, public exam definitions
+- [NIE Grade 6 Mathematics Teacher's Guide (2015)](https://nie.lk/pdffiles/tg/e6tim109.pdf) - **primary source**. Curriculum cycle and rationalisation history
+- [DoE: Performance of Candidates, O/L 2025](https://www.doenets.lk/images/resources/STAT/Performance%20of%20candidates%20%E2%80%93%202025%20OL%20_1782390949227.pdf) - candidate numbers and qualification rates
 - [British Council: ELT learning and assessment in Sri Lanka (2022)](https://www.teachingenglish.org.uk/sites/teacheng/files/2022-04/ELT%20learning%20and%20assessment%20in%20Sri%20Lanka_April%202022_new2.pdf) - school counts by medium
 - [IDE / JICA report on Sri Lankan education](https://www.ide.go.jp/library/Japanese/Publish/Reports/InterimReport/2013/pdf/C02_ch7.pdf) - English proficiency, system structure
 - [NEC: Recommendations on Medium of Instruction](https://nec.gov.lk/wp-content/uploads/2025/05/Recommendations-for-the-National-Policy-on-Medium-of-Instruction-in-Schools.pdf) - policy direction, bilingual programme

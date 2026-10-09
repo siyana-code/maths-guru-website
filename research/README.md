@@ -39,17 +39,14 @@ will forget why you made a decision. This folder is the memory.
 | 13 | [Roadmap](./13-roadmap.md) | What order do we do this in? |
 | 14 | [Open questions](./14-open-questions.md) | What we still do not know. |
 
-### Still to write
+### Syllabus
 
-| Document | What it will answer |
-| --- | --- |
-| Grade 6 syllabus | What must a Year 7 student actually learn? |
-| O-Level syllabus | What are the branches and main components? |
+| # | Document | What it answers |
+| --- | --- | --- |
+| 03 | [Grade 6 syllabus](./03-grade6-syllabus.md) | What must a Grade 6 student actually learn? 25 units, 157 periods |
+| 04 | [O-Level maths syllabus](./04-olevel-syllabus.md) | The full Grade 11 syllabus, 25 units, 190 periods, plus the verified exam structure |
 
-**To be written directly from NIE source documents** (nie.lk), not from
-secondary summaries. Getting the topic list and order right matters more than
-anything else in this folder, because it decides the whole structure of the
-site.
+Both are taken **directly from the NIE Teacher's Guides**, not from summaries.
 
 ### Reference
 

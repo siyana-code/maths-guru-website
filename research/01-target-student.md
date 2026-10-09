@@ -23,7 +23,7 @@ are building for first.
 
 ### Who they are
 
-- Age 11-12. In Year 7, the first year of secondary school.
+- Age 11-12. Grade 6 is the first year of secondary school.
 - Bright enough. School reports and parents say "she is clever".
 - Failing maths, or barely passing.
 - Cannot tell you what is wrong, because nobody has ever explained it to them.
@@ -241,7 +241,8 @@ These are not opinions. They are the numbers.
 - **Sinhala and Tamil are not optional.** Sinhala Medium is the largest group,
   Tamil Medium about a quarter of schools, English Medium only about 1.4% of
   students.
-- **"Grade 6" is called Year 7.** Use the name families use, but know both.
+- **"Grade 6" is the real name.** Sri Lanka calls it Grade 6. "Year 7" is a UK
+  mapping we should avoid.
 
 ---
 

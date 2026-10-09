@@ -96,45 +96,98 @@ Two papers, both with Part A and Part B.
 
 ### Paper I - 2 hours
 
-Covers essential learning content only.
-
-| Part | What |
-| --- | --- |
-| **Part A** | **25 short questions** (multiple choice) |
-| **Part B** | **5 structured essay questions**, covering number, measurement, sets, probability and statistics |
-
-Marking weights: knowledge and skills 50%, communication 30%, identifying
-relationships 20%.
-
-### Paper II - 3 hours 10 minutes
-
-| Part | What |
-| --- | --- |
-| **Part A** | 3 algebra questions |
-| **Part B** | 3 geometry questions |
-
-Students **answer 5 questions: 3 chosen from Part A and 2 from Part B** (from the
-official structure: 8 structured and 4 essay questions, choose 5).
-
-### Total and grading
-
-**Total: 100 marks.**
-
-| Marks | Grade | Meaning |
+| Part | Questions | Marks |
 | --- | --- | --- |
-| 75-100 | **A** | Distinction |
-| 65-74 | **B** | Very Good Pass |
-| 50-64 | **C** | Credit Pass |
-| 35-49 | **S** | Ordinary Pass |
-| Below 35 | **W** | Fail |
+| **Part A** | **1-25, multiple choice** | **2 marks each = 50** |
+| **Part B** | **1-5, structured** with sub-parts (i)-(iv) | **10 marks each = 50** |
 
-**You need at least an S in all six compulsory subjects.** Failing one
-compulsory subject fails the whole O-Level, however good the other five are.
+MCQs are answered **on the question paper itself**, not on a separate
+machine-readable sheet.
 
-> **Caution on exact boundaries:** two independent sources give the 50 and 35
-> cut-offs above, but we did not find them in a primary Ministry document.
-> Well-attested, not officially confirmed. Check with the DoE before
-> publishing these as fact on our site.
+Marking weights for content: knowledge and skills 50%, communication 30%,
+identifying relationships 20%.
+
+### Paper II - 3 hours, plus 10 minutes reading time
+
+| Part | Questions | What |
+| --- | --- | --- |
+| **Part A** | 1-6, **answer 5** | Application-style, multi-part. 10 marks each |
+| **Part B** | 7-12, **answer 5** | Proof, geometry, statistics. Includes "show that" |
+
+Students answer **10 questions total: 5 from each part.** 10 marks each, so 100
+marks for a 3-hour paper.
+
+Part B in recent papers includes geometry proofs, circle theorems and Venn
+diagram problems.
+
+### Total: 200 marks, not 100
+
+Verified from the official 2020 marking scheme and the 2025 paper:
+
+```
+Paper I  = 100  (Part A 25 x 2 = 50, Part B 5 x 10 = 50)
+Paper II = 100  (Part A 5 answered x 10 = 50, Part B 5 answered x 10 = 50)
+TOTAL    = 200
+```
+
+> **Our earlier draft said 100 marks. That was wrong.** Each paper is worth 100;
+> the subject is worth 200.
+
+### The three mistakes students make
+
+**1. MCQs are worth 2 marks, not 1.** 25 MCQs = 50 marks. Assuming 1 mark each
+miscalculates the weighting by 25 marks.
+
+**2. Paper I is not all multiple choice.** Part B is 5 extended questions with
+sub-parts, worth 10 marks each. Revising only for MCQ prepares you for half
+the paper.
+
+**3. Paper II has more questions than you answer.** You answer **10 of 12** -
+5 from Part A, 5 from Part B.
+
+### Pass marks: NOT VERIFIED
+
+**We could not find an official source for the numeric grade boundaries.** This
+is a genuine gap and third-party sources conflict:
+
+| Source | C | S | W |
+| --- | --- | --- | --- |
+| edus.lk | 55-64 | 40-54 | <40 |
+| haritools | 50-64 | 35-49 | <35 |
+| induwara.lk | 50-64 | 35-49 | <35 |
+
+> **Do not publish any of these.** Get the boundaries from a DoE gazette
+> notification or an official result-sheet legend first.
+
+What official sources *do* confirm:
+
+- Grades are letters. "Credit pass" is distinct from "simple pass".
+- **A/L eligibility needs 6 subjects passed with at least 3 credits.**
+- Students aim for "9 A passes".
+
+### 2025 results, official figures
+
+| Figure | Value |
+| --- | --- |
+| School candidates, first attempt | **308,562** |
+| Qualified for G.C.E. A/L | **73.16%** |
+| Passed 6+ subjects with 3 credits | 71.13% |
+| Obtained 9 A passes | 2.33% |
+
+**73% qualifying for A/L sounds high until you notice that only 1,949 of 3,204
+schools even teach Grades 12-13.** About a third of schools do not offer
+A-Level, so for those students O-Level is the final exam.
+
+### SBA cannot substitute for Maths
+
+From MoE Circular 23/2017, O/L certification uses five SBA stages (Grade 10
+Terms 1-3, Grade 11 Terms 1-2).
+
+But the circular says SBA-to-credit-pass conversion is **"not relevant to
+medium language and mathematics."**
+
+> **Maths is explicitly excluded. The written exam is the only thing that
+> counts, so we should not build SBA-alternative features.**
 
 ---
 
@@ -249,9 +302,20 @@ is sharper but more seasonal.
 
 ---
 
-## Correction note
+## Corrections to earlier versions
 
-An earlier version of this research stated that O/L is "usually held in
-September/October." **That was wrong.** O/L has historically been held in
-December, and December is what is being restored now. This document is verified
-against the official DoE timetables.
+This file has been corrected twice. Both times the syllabus research, done
+directly from NIE documents and the actual exam paper, contradicted what we had
+written from secondary sources.
+
+| We claimed | Actually |
+| --- | --- |
+| O/L held September/October | **Wrong.** Normally December |
+| Total 100 marks | **Wrong.** 200 total, two papers of 100 |
+| MCQs worth 1 mark | **Wrong.** 2 marks each |
+| Grade boundaries A75 / C50 / S35 | **Unverified.** Sources conflict. Do not publish |
+| Official domain `exams.gov.lk` | **`doenets.lk`** |
+
+> **The pattern is worth noticing: every error came from a secondary source, and
+> every correction came from a primary document.** For anything factual about the
+> exam or syllabus, go to NIE and the DoE directly.

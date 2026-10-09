@@ -31,6 +31,16 @@ Before any feature, remember these. Every one of them kills ideas.
 
 **If we build nothing else, build this.** Everything else depends on it.
 
+**Start with NIE competency 3.2, equivalent fractions.** The official Grade 6
+syllabus allocates it **one 40-minute period**, and it gates four later
+competencies: adding fractions (3.4), decimals (3.5), ratio (4.1), and
+eventually percentage and algebra. Full syllabus in
+[03-grade6-syllabus.md](./03-grade6-syllabus.md).
+
+Follow the **official NIE lesson sequence** rather than an invented order.
+Teachers teach it that way, prerequisites line up, and every page maps to an
+official competency number.
+
 ### 1. Step-by-step worked examples
 
 Not a video. Not a PDF. A structured sequence where each step is explained and
@@ -258,7 +268,7 @@ See [the roadmap](./13-roadmap.md) for sequencing and milestones.
 
 Short version:
 
-1. **Prove the core works** - one topic, Grade 6 fractions, English, phone only
+1. **Prove the core works** - equivalent fractions (3.2), English, phone only
 2. **Prove students use it** - habit, not signups
 3. **Prove parents value it** - the weekly report
 4. **Then scale** - more topics, then languages
