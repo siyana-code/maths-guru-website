@@ -197,13 +197,38 @@ then solved it himself.
 Everything up to here has been **one topic, English, one small group of
 students**. Now, and only now, we expand.
 
+### Where we actually are
+
+**Phase 1 is partly done.** Two competencies are built end to end:
+
+| Competency | Lesson | Questions | Status |
+| --- | --- | --- | --- |
+| **3.2** Equivalent fractions | Yes | 5 independent, 2 completion | Built |
+| **3.4** Adding and subtracting fractions | Yes | 6 independent, 2 completion | Built |
+
+Both follow the official NIE sequence. The engine is generic across
+competencies: adding a new one is one bank file plus one registry entry.
+
+**Still unverified:** no student has used either topic. Every diagnosis is
+written from research, not from watching someone get it wrong.
+
 ### Order of expansion
 
-1. **More Grade 6 topics** - 25 units, 157 periods. Follow the official NIE
-   sequence in [03-grade6-syllabus.md](./03-grade6-syllabus.md)
-2. **Grade 7-8** - when we are confident about prerequisite tracking
-3. **Grade 9-11** - the O-Level audience (25 units, 190 periods), who need past
-   papers too. See [04-olevel-syllabus.md](./04-olevel-syllabus.md)
+1. **1.6 Factors and multiples up to 100** - the prerequisite of 3.2. Five
+   periods upstream, and a student weak here cannot do equivalent fractions
+   properly. Filling it also completes the prerequisite chain.
+2. **3.1 and 3.3** - the rest of the fractions block (3.1-3.4). Filling these
+   completes competency 3, which is the whole foundation of the Grade 6 course.
+3. **4.1 Ratio and rate** - the next concept, 6 periods, and the one students
+   meet most often in real life.
+4. **Grade 7-8** - when we are confident about prerequisite tracking.
+5. **Grade 9-11** - the O-Level audience (25 units, 190 periods), who need past
+   papers too. See [04-olevel-syllabus.md](./04-olevel-syllabus.md).
+
+> **Note the pattern:** we are filling the fractions block before moving on,
+> not jumping topic to topic. A student who cannot add fractions cannot do
+> ratio, cannot do percentage, and cannot do algebra. The dependency chain is
+> the syllabus, so we follow it.
 4. **Sinhala** - this should come earlier than it does here, but we need to
    validate the model first
 5. **Tamil** - the biggest untapped opportunity, and the biggest commitment
@@ -298,6 +323,15 @@ See [10-making-money.md](./10-making-money.md).
 | 3. Parents | 3-4 weeks | Medium |
 | 4. More content | Ongoing | Low. Depends entirely on Phase 1 |
 | 5. Distribution | 3+ months | Low |
+
+**Two topics built while waiting for access to students.** That was a deliberate
+trade: Phase 0 needs students we cannot yet reach, so the time went into content
+instead of idling. It has a cost we should name honestly:
+
+> **Building ahead of validation means every diagnosis in two competencies is
+> unverified.** When we do get a student, the first session should be on 3.2,
+> and the main thing to watch is whether our diagnoses match reality. That is
+> cheap to fix and expensive to discover late.
 
 **The honest risk is Phase 2.** Building one topic well is achievable alone in
 a month. Getting a student to voluntarily come back four times a week is much

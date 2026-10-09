@@ -40,11 +40,13 @@ src/
 │   └── Base.astro            Shared shell, KaTeX loading
 ├── lib/
 │   ├── engine.ts             mark / record / scheduler  <- the core
-│   ├── engine.test.ts        31 tests
+│   ├── engine.test.ts        Engine behaviour
+│   ├── bank.test.ts          Question bank integrity, every bank
 │   └── types.ts              Domain types + answer normalisation
 ├── pages/
 │   ├── index.astro
 │   └── grade/{6,11}/
+├── scripts/practice.ts       DOM layer for the practice runner
 ├── styles/global.css
 └── types/env.d.ts
 
@@ -82,12 +84,37 @@ no accounts, no sign-up, and no server-side tracking.
    title, period count, prerequisites.
 2. Write the lesson in `src/content/lesson/`. Every worked-example step carries a
    `why`, not just a `what`. That is the whole product.
-3. Add questions to `src/data/questions/`. Each wrong answer needs at least one
-   diagnosis.
+3. Add questions to `src/data/questions/<grade>-<id>.ts` and register it in
+   `src/data/questions/index.ts`.
 4. Create the page under `src/pages/grade/<grade>/<id>/`.
 
 The content schema will refuse to build a lesson that is missing a competency id
 or has an invalid one.
+
+### Content tests
+
+`src/lib/bank.test.ts` runs over **every** registered bank, so a new competency
+gets all the checks automatically. It will fail the build if:
+
+- a question has no diagnosis, so a wrong answer would be reported as a bare
+  "incorrect"
+- an answer appears in both `accept` and `diagnoses` — a student typing a correct
+  answer and being told they made a named mistake
+- two diagnoses fire for the same answer, giving contradictory advice
+- a diagnosis blames the student, or has no cause and no next step
+- an independent question has fewer than two hints for the ladder to fade
+- a completion question has no starting point
+
+## Coverage
+
+| Competency | Lesson | Questions |
+| --- | --- | --- |
+| 3.2 Equivalent fractions | done | 7 |
+| 3.4 Adding and subtracting fractions | done | 8 |
+
+Both Grade 6, Term 2, following the official NIE sequence. `MISSING_QUESTION_BANKS`
+in the registry lists what is not built yet, so the gap is visible rather than
+implied by absence.
 
 ## Adding maths to a lesson
 
