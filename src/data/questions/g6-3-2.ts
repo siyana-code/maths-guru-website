@@ -183,19 +183,20 @@ export const questions: Question[] = [
     ],
     diagnoses: [
       {
-        when: ['3/4', '6/8'],
-        say: 'One of these is the answer, but there is only one correct answer here.',
+        // "3/4" only makes sense as picking one side of the comparison.
+        when: ['3/4'],
+        say: 'That is only one of the two fractions we were given.',
         because:
-          'The question asks which is bigger. If you think one is bigger, you are saying they are different amounts.',
+          'The question asks which one is bigger, so answering with a single fraction means picking a side. Both of them are on the table here.',
         instead:
-          'Try dividing both the 6 and the 8 by 2. What happens?',
+          'Decide whether 3/4 or 6/8 is the larger amount, then say which one it is.',
       },
       {
         when: ['6/8'],
-        say: 'That is not bigger than 3/4. They are the same amount.',
+        say: 'That one is not bigger. They are the same amount.',
         because:
-          'When the bottom number gets bigger, the top usually gets bigger too, by the same amount, and the fraction stays equal.',
-        instead: 'Halve both numbers in 6/8. Do you get 3/4?',
+          'When the bottom number gets bigger, the top gets bigger by the same amount, and the fraction stays equal to what it was.',
+        instead: 'Divide both the 6 and the 8 by 2. Do you land on 3/4?',
       },
     ],
   },
@@ -213,11 +214,13 @@ export const questions: Question[] = [
     ],
     diagnoses: [
       {
-        when: ['4/6', '4/6.'],
-        say: 'That is the fraction you started with.',
+        // "4/6." normalises to "4/6", so listing both would make two diagnoses
+        // fire for one answer.
+        when: ['4/6'],
+        say: 'That is the fraction you started with, not in its smallest form.',
         because:
-          'To put a fraction into its smallest form you need to make both numbers as small as possible while keeping the amount the same.',
-        instead: 'Both 4 and 6 can be divided by 2. Try it.',
+          'The smallest form is the version where both numbers are as small as they can go while the amount stays the same. Copying the numbers you were given does not reduce them.',
+        instead: 'Both 4 and 6 can be divided by 2. Do that to both of them.',
       },
       {
         when: ['1/2', '⅓'],

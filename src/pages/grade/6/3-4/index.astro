@@ -1,0 +1,33 @@
+---
+import Base from '../../../../layouts/Base.astro';
+import Practice from '../../../../components/Practice.astro';
+import { getEntry, render } from 'astro:content';
+
+const entry = await getEntry('lesson', 'g6-3-4-worked');
+if (!entry) throw new Error('Lesson g6-3-4-worked not found');
+
+const { Content } = await render(entry);
+---
+
+<Base title="Adding and subtracting fractions" description={entry.data.description}>
+  <p class="muted">
+    <a href="/grade/6">Grade 6</a> &rsaquo; NIE competency 3.4 &rsaquo;
+    Adding and subtracting fractions
+  </p>
+
+  <Content />
+
+  <div class="callout callout-key">
+    <p class="callout-title">Before you start</p>
+    <p>
+      This topic depends entirely on
+      <a href="/grade/6/3-2">equivalent fractions (competency 3.2)</a>. If
+      rewriting a bottom number feels unfamiliar, go there first. It takes
+      about 8 minutes.
+    </p>
+  </div>
+
+  <hr />
+
+  <Practice competencyId="3.4" stage="independent" />
+</Base>
