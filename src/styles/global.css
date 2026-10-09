@@ -1,0 +1,654 @@
+/*
+  MathsGuru - global styles.
+
+  Mobile-first and deliberately plain. The constraints from the research are
+  not preferences:
+    - 80% of Sri Lankan device use is a smartphone
+    - only 21.3% of households own a computer
+    - students pay over LKR 2,000/month for data
+
+  So: system fonts (no font download), no images, minimal CSS, and generous
+  line-height because a tired student on a small screen needs readable text
+  more than they need visual refinement.
+*/
+
+:root {
+  --ink: #0f172a;
+  --ink-soft: #475569;
+  --ink-faint: #64748b;
+  --paper: #ffffff;
+  --wash: #f8fafc;
+  --line: #e2e8f0;
+
+  --brand: #1d4ed8;
+  --brand-dark: #1e40af;
+  --brand-wash: #eff6ff;
+
+  --good: #047857;
+  --good-wash: #ecfdf5;
+  --good-line: #a7f3d0;
+
+  --nudge: #b45309;
+  --nudge-wash: #fffbeb;
+  --nudge-line: #fde68a;
+
+  --radius: 10px;
+  --wrap: 42rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Never disable zoom. Pinch-to-zoom is an accessibility requirement. */
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  /* Prevent the iOS zoom-on-focus jump by keeping inputs at 17px+. */
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap {
+  max-width: var(--wrap);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* --- Links -------------------------------------------------------------- */
+
+a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  color: var(--brand-dark);
+}
+
+:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* --- Header and footer -------------------------------------------------- */
+
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+  /* Keep the header visible but out of the way on small screens. */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 3.5rem;
+  gap: 1rem;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--ink);
+  text-decoration: none;
+  letter-spacing: -0.01em;
+}
+
+.site-header nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.9375rem;
+}
+
+.site-header nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding-block: 0.5rem;
+}
+
+.site-header nav a:hover {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding-block: 2rem 3rem;
+  border-top: 1px solid var(--line);
+  background: var(--wash);
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+}
+
+.site-footer p {
+  margin-block: 0.4rem;
+}
+
+/* --- Typography --------------------------------------------------------- */
+
+h1,
+h2,
+h3 {
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: var(--ink);
+}
+
+h1 {
+  font-size: 1.875rem;
+  margin-block: 2rem 0.75rem;
+}
+
+h2 {
+  font-size: 1.375rem;
+  margin-block: 2.5rem 0.75rem;
+}
+
+h3 {
+  font-size: 1.125rem;
+  margin-block: 1.75rem 0.5rem;
+}
+
+p,
+ul,
+ol {
+  margin-block: 0.9rem;
+}
+
+li {
+  margin-block: 0.35rem;
+}
+
+.lede {
+  font-size: 1.125rem;
+  color: var(--ink-soft);
+  margin-bottom: 1.5rem;
+}
+
+.muted {
+  color: var(--ink-faint);
+  font-size: 0.9375rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin-block: 2.5rem;
+}
+
+/* --- Maths -------------------------------------------------------------- */
+
+/*
+  KaTeX auto-render output.
+
+  The rehype plugin emits raw $$...$$ and \(...\) delimiters, and KaTeX replaces
+  them with .katex spans. If KaTeX fails to load (bad connection, blocked CDN)
+  the raw TeX stays visible, which is degraded but readable - far better than a
+  blank space where a formula should be.
+*/
+
+.math-block {
+  margin-block: 1.5rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Display maths should sit centred, as it does in a textbook. */
+.math-block .katex-display {
+  margin-block: 0;
+}
+
+/*
+  KaTeX emits both a visual rendering (.katex-html) and real MathML
+  (.katex-mathml). The MathML is what a screen reader uses.
+
+  KaTeX already marks .katex-html aria-hidden so screen readers skip the visual
+  duplicate. We only need to guarantee the MathML is present and not hidden.
+*/
+.katex-mathml math {
+  display: inline;
+}
+
+/* Long expressions must scroll rather than force the whole page sideways. */
+.katex-display > .katex {
+  white-space: normal;
+}
+
+@media (min-width: 40rem) {
+  .math-block .katex {
+    font-size: 1.05em;
+  }
+}
+
+/* --- Callouts ----------------------------------------------------------- */
+
+/*
+  The "nudge" callout replaces the red cross. Error messages in this product
+  are informational, never punitive - see research/08-teaching-method.md.
+*/
+
+.callout {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--ink-faint);
+  background: var(--wash);
+  border-radius: var(--radius);
+  padding: 1rem 1.15rem;
+  margin-block: 1.5rem;
+}
+
+.callout :is(p, ul, ol):first-child {
+  margin-top: 0;
+}
+
+.callout :is(p, ul, ol):last-child {
+  margin-bottom: 0;
+}
+
+.callout-title {
+  font-weight: 650;
+  margin-block: 0 0.4rem;
+  font-size: 0.9375rem;
+}
+
+.callout-good {
+  border-left-color: var(--good);
+  background: var(--good-wash);
+  border-color: var(--good-line);
+}
+
+.callout-good .callout-title {
+  color: var(--good);
+}
+
+.callout-nudge {
+  border-left-color: var(--nudge);
+  background: var(--nudge-wash);
+  border-color: var(--nudge-line);
+}
+
+.callout-nudge .callout-title {
+  color: var(--nudge);
+}
+
+.callout-key {
+  border-left-color: var(--brand);
+  background: var(--brand-wash);
+  border-color: #bfdbfe;
+}
+
+.callout-key .callout-title {
+  color: var(--brand-dark);
+}
+
+/*
+  The hidden attribute must win.
+  Our own display rules (.button-row is flex, .hint-list is a list) would
+  otherwise override it, and a "Next question" button would appear before the
+  student had answered anything.
+*/
+[hidden] {
+  display: none !important;
+}
+
+/* --- Buttons ------------------------------------------------------------ */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /* 48px minimum touch target. */
+  min-height: 3rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--brand);
+  background: var(--brand);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  /* 16px+ so iOS does not zoom when it receives focus. */
+  font-family: inherit;
+}
+
+.button:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+}
+
+.button-quiet {
+  background: var(--paper);
+  color: var(--brand);
+}
+
+.button-quiet:hover {
+  background: var(--brand-wash);
+  color: var(--brand-dark);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-block: 1.5rem;
+}
+
+/* --- Cards -------------------------------------------------------------- */
+
+.card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.15rem 1.25rem;
+  background: var(--paper);
+}
+
+.card + .card {
+  margin-top: 1rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  margin-block: 0.6rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: var(--wash);
+  border: 1px solid var(--line);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+/* --- Inputs ------------------------------------------------------------- */
+
+.field {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0.7rem 0.9rem;
+  font-size: 1.0625rem;
+  font-family: inherit;
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.field:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-wash);
+}
+
+.field::placeholder {
+  color: var(--ink-faint);
+}
+
+/* --- Tables ------------------------------------------------------------- */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.5rem;
+  font-size: 0.9375rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.6rem 0.7rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+th {
+  font-weight: 650;
+  background: var(--wash);
+}
+
+/* Tables overflow horizontally on a phone rather than squashing. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* --- Steps (worked examples) -------------------------------------------- */
+
+.steps {
+  list-style: none;
+  counter-reset: step;
+  padding: 0;
+  margin-block: 1.5rem;
+}
+
+.steps > li {
+  counter-increment: step;
+  position: relative;
+  padding: 0 0 0 3rem;
+  margin-block: 1.5rem;
+}
+
+.steps > li::before {
+  content: counter(step);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--brand);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+
+.step-do {
+  font-weight: 600;
+  margin-block: 0 0.35rem;
+}
+
+.step-why {
+  color: var(--ink-soft);
+  margin-block: 0;
+  padding-left: 0.9rem;
+  border-left: 3px solid var(--line);
+  font-size: 0.9375rem;
+}
+
+/* --- Practice ----------------------------------------------------------- */
+
+.practice {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  margin-block: 1.5rem;
+  background: var(--paper);
+}
+
+.practice-stage {
+  font-size: 0.8125rem;
+  color: var(--ink-faint);
+  margin-block: 0 0.35rem;
+}
+
+.feedback {
+  margin-top: 1rem;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+}
+
+.feedback:empty {
+  display: none;
+}
+
+.feedback[data-tone='good'] {
+  background: var(--good-wash);
+  border-color: var(--good-line);
+  color: #065f46;
+}
+
+.feedback[data-tone='nudge'] {
+  background: var(--nudge-wash);
+  border-color: var(--nudge-line);
+  color: #92400e;
+}
+
+.feedback-title {
+  font-weight: 650;
+  margin-block: 0 0.35rem;
+}
+
+.feedback-parts {
+  margin-block: 0.6rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+.feedback-parts li {
+  margin-block: 0.45rem;
+}
+
+.feedback-parts strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+  margin-bottom: 0.1rem;
+}
+
+.hint-btn {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.5rem 0.85rem;
+  min-height: 2.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  margin-top: 0.75rem;
+}
+
+.hint-btn:hover {
+  border-color: var(--brand);
+  color: var(--brand);
+}
+
+.hint-list {
+  margin-top: 0.6rem;
+  padding-left: 1.2rem;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+}
+
+.hint-list li {
+  margin-block: 0.3rem;
+}
+
+/* --- Progress ----------------------------------------------------------- */
+
+.progress-line {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.9375rem;
+  color: var(--ink-soft);
+  margin-block: 0.75rem;
+}
+
+.progress-track {
+  height: 0.5rem;
+  background: var(--line);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--brand);
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .progress-fill {
+    transition: none;
+  }
+}
+
+/* --- Home page ---------------------------------------------------------- */
+
+.hero {
+  padding-block: 2.5rem 1.5rem;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-top: 0;
+}
+
+.promise {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  background: var(--wash);
+  margin-block: 2rem;
+}
+
+.promise ul {
+  margin-block: 0.6rem 0;
+  padding-left: 1.2rem;
+}
+
+.promise li {
+  margin-block: 0.4rem;
+}
+
+@media (min-width: 40rem) {
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  body {
+    font-size: 1.09375rem;
+  }
+}

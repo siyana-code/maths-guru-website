@@ -1,0 +1,29 @@
+{
+  "name": "maths-guru-website",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Helping Sri Lankan students actually understand mathematics, Grade 6 to O-Level.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "tsx --test src/lib/**/*.test.ts"
+  },
+  "dependencies": {
+    "astro": "^5.14.1",
+    "remark-math": "^6.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@types/node": "^26.6.4",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.2"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
